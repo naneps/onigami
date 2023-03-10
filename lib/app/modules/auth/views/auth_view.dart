@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_pattern_starter/app/common/buttons/XButton.dart';
-import 'package:getx_pattern_starter/app/common/input/XField.dart';
-import 'package:getx_pattern_starter/app/routes/app_pages.dart';
-import 'package:getx_pattern_starter/app/themes/theme.dart';
+import 'package:onigami/app/common/buttons/XButton.dart';
+import 'package:onigami/app/common/input/XField.dart';
+import 'package:onigami/app/routes/app_pages.dart';
+import 'package:onigami/app/themes/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -15,14 +15,13 @@ class AuthView extends GetView<AuthController> {
   const AuthView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 19),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           child: SingleChildScrollView(
             child: Form(
-              key: _formKey,
+              key: controller.formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +49,7 @@ class AuthView extends GetView<AuthController> {
                             ),
                             children: [
                               TextSpan(
-                                text: "GetX",
+                                text: "Oni",
                                 style: GoogleFonts.poppins(
                                   color: ThemeApp.primaryColor,
                                   fontSize: 22,
@@ -58,7 +57,7 @@ class AuthView extends GetView<AuthController> {
                                 ),
                               ),
                               TextSpan(
-                                text: " Starter",
+                                text: "Gami",
                                 style: GoogleFonts.poppins(
                                   color: ThemeApp.darkColor,
                                   fontSize: 22,
@@ -83,15 +82,22 @@ class AuthView extends GetView<AuthController> {
                     height: 10,
                   ),
                   XTextField(
-                    labelText: "Phone",
-                    hintText: "+6281xxxx",
-                    prefixIcon: MdiIcons.phoneOutline,
+                    labelText: "Email",
+                    hintText: "example@gmail.com",
+                    prefixIcon: MdiIcons.emailOutline,
                     onSave: (val) {
                       // controller.phone.value = val!;
+                      controller.email.value = val!;
                     },
                     validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Phone can't be empty";
+                      // make validator email must be valid
+                      bool validEmail =
+                          RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value!);
+                      if (value.isEmpty) {
+                        return "Email can't be empty";
+                      } else if (!validEmail) {
+                        return "Email must be valid";
                       }
                       return null;
                     },
@@ -147,9 +153,10 @@ class AuthView extends GetView<AuthController> {
                     hasIcon: true,
                     icon: MdiIcons.login,
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        // controller.login();
+                      if (controller.formKey.currentState!.validate()) {
+                        controller.formKey.currentState!.save();
+                        // controller.loginWithGoogle();
+                        controller.loginWithEmailAndPassword();
                       }
                     },
                   ),
@@ -188,16 +195,6 @@ class AuthView extends GetView<AuthController> {
                   ),
                   const SizedBox(
                     height: 10,
-                  ),
-                  // register
-                  XButton(
-                    text: "Register",
-                    hasIcon: true,
-                    icon: MdiIcons.accountPlusOutline,
-                    onPressed: () {
-                      // controller.register();
-                      Get.toNamed(Routes.REGISTER);
-                    },
                   ),
                 ],
               ),

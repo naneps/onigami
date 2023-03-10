@@ -1,12 +1,14 @@
 import 'package:get/get.dart';
-import 'package:getx_pattern_starter/app/modules/auth/views/register_view.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
+import '../modules/auth/views/register_view.dart';
 import '../modules/core/bindings/core_binding.dart';
 import '../modules/core/views/core_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/onboarding/bindings/onboarding_binding.dart';
+import '../modules/onboarding/views/onboarding_view.dart';
 
 part 'app_routes.dart';
 
@@ -35,6 +37,11 @@ class AppPages {
       name: _Paths.CORE,
       page: () => CoreView(),
       binding: CoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING,
+      page: () => const OnboardingView(),
+      binding: OnboardingBinding(),
     ),
   ];
 }

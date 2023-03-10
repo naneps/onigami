@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "776400766845",
+    "project_id": "onigami-e5b28",
+    "storage_bucket": "onigami-e5b28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776400766845:android:26392617c32fc8e76d2e14",
+        "android_client_info": {
+          "package_name": "com.startsheep.onigami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776400766845-ueoremb4pusbsudr2le4ogequ0hi3s60.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.startsheep.onigami",
+            "certificate_hash": "8c3c65a0bec1dc513d5499062aec0a7688dc9f87"
+          }
+        },
+        {
+          "client_id": "776400766845-307picha3aq8vpsff327ipuebu913j16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRweEOQxRD_bQ1SY6-MU9Gp9qZVGyIr6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776400766845-307picha3aq8vpsff327ipuebu913j16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

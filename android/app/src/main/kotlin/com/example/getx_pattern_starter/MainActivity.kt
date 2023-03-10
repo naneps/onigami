@@ -1,4 +1,4 @@
-package com.example.getx_pattern_starter
+package com.startsheep.onigami
 
 import io.flutter.embedding.android.FlutterActivity
 

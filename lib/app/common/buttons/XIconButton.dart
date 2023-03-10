@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_pattern_starter/app/themes/theme.dart';
+import 'package:onigami/app/themes/theme.dart';
 
 // ignore: must_be_immutable
 class XIconButton extends StatelessWidget {

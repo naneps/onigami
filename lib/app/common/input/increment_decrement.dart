@@ -3,8 +3,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_pattern_starter/app/common/buttons/XIconButton.dart';
-import 'package:getx_pattern_starter/app/themes/theme.dart';
+import 'package:onigami/app/common/buttons/XIconButton.dart';
+import 'package:onigami/app/themes/theme.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class IncDecWidget extends StatefulWidget {
