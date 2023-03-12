@@ -4,7 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_pattern_starter/app/themes/theme.dart';
+import 'package:onigami/app/themes/theme.dart';
 import 'package:intl/intl.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -113,6 +113,20 @@ class Utils {
           topRight: Radius.circular(radius),
           bottomLeft: const Radius.circular(0),
           bottomRight: Radius.circular(radius),
+        );
+      case RadiusType.diagonal1:
+        return BorderRadius.only(
+          topLeft: Radius.circular(radius),
+          topRight: const Radius.circular(0),
+          bottomLeft: const Radius.circular(0),
+          bottomRight: Radius.circular(radius),
+        );
+      case RadiusType.diagonal2:
+        return BorderRadius.only(
+          topLeft: const Radius.circular(0),
+          topRight: Radius.circular(radius),
+          bottomLeft: Radius.circular(radius),
+          bottomRight: const Radius.circular(0),
         );
       default:
         return BorderRadius.circular(radius);

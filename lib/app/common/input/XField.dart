@@ -1,4 +1,4 @@
-import 'package:getx_pattern_starter/app/themes/theme.dart';
+import 'package:onigami/app/themes/theme.dart';
 import 'package:flutter/material.dart';
 
 class XTextField extends StatelessWidget {

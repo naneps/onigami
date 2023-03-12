@@ -31,82 +31,80 @@ class ThemeApp {
     primaryColor: primaryColor,
     primaryColorDark: neutralColor,
     primaryColorLight: backgroundColor,
-    errorColor: errorColor,
-    backgroundColor: lightColor,
     scaffoldBackgroundColor: backgroundColor,
     fontFamily: GoogleFonts.inter().fontFamily,
     textTheme: TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         color: primaryTextColor,
         fontSize: 96,
         fontWeight: FontWeight.w300,
         letterSpacing: -1.5,
       ),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         color: primaryTextColor,
         fontSize: 60,
         fontWeight: FontWeight.w300,
         letterSpacing: -0.5,
       ),
-      headline3: TextStyle(
+      displaySmall: TextStyle(
         color: primaryTextColor,
         fontSize: 48,
         fontWeight: FontWeight.w400,
       ),
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         color: primaryTextColor,
         fontSize: 34,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
       ),
-      headline5: TextStyle(
+      headlineSmall: TextStyle(
         color: primaryTextColor,
         fontSize: 24,
         fontWeight: FontWeight.w400,
       ),
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         color: primaryTextColor,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
       ),
-      subtitle1: TextStyle(
+      titleMedium: TextStyle(
         color: primaryTextColor,
         fontSize: 16,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.15,
       ),
-      subtitle2: TextStyle(
+      titleSmall: TextStyle(
         color: primaryTextColor,
         fontSize: 14,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
       ),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         color: primaryTextColor,
         fontSize: 16,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.5,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         color: primaryTextColor,
         fontSize: 14,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
       ),
-      button: TextStyle(
+      labelLarge: TextStyle(
         color: primaryTextColor,
         fontSize: 14,
         fontWeight: FontWeight.w500,
         letterSpacing: 1.25,
       ),
-      caption: TextStyle(
+      bodySmall: TextStyle(
         color: primaryTextColor,
         fontSize: 12,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.4,
       ),
-      overline: TextStyle(
+      labelSmall: TextStyle(
         color: primaryTextColor,
         fontSize: 10,
         fontWeight: FontWeight.w400,
@@ -167,7 +165,6 @@ class ThemeApp {
         color: primaryColor,
       ),
     ),
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: accentColor),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: lightTextColor,
@@ -184,21 +181,47 @@ class ThemeApp {
         color: lightTextColor,
       ),
       toolbarTextStyle: TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           color: lightTextColor,
           fontSize: 20,
           fontWeight: FontWeight.w500,
           letterSpacing: 0.15,
         ),
-      ).bodyText2,
+      ).bodyMedium,
       titleTextStyle: TextTheme(
-        headline6: TextStyle(
+        titleLarge: TextStyle(
           color: lightTextColor,
           fontSize: 20,
           fontWeight: FontWeight.w500,
           letterSpacing: 0.15,
         ),
-      ).headline6,
+      ).titleLarge,
+    ),
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(secondary: accentColor)
+        .copyWith(background: backgroundColor)
+        .copyWith(error: errorColor),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: primaryColor,
+      selectedItemColor: accentColor,
+      unselectedItemColor: lightTextColor,
+      selectedLabelStyle: TextStyle(
+        color: accentColor,
+      ),
+      unselectedLabelStyle: TextStyle(
+        color: lightTextColor,
+      ),
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+    ),
+    iconTheme: IconThemeData(
+      color: primaryColor,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: primaryColor,
+      ),
     ),
   );
 }
