@@ -114,6 +114,20 @@ class Utils {
           bottomLeft: const Radius.circular(0),
           bottomRight: Radius.circular(radius),
         );
+      case RadiusType.diagonal1:
+        return BorderRadius.only(
+          topLeft: Radius.circular(radius),
+          topRight: const Radius.circular(0),
+          bottomLeft: const Radius.circular(0),
+          bottomRight: Radius.circular(radius),
+        );
+      case RadiusType.diagonal2:
+        return BorderRadius.only(
+          topLeft: const Radius.circular(0),
+          topRight: Radius.circular(radius),
+          bottomLeft: Radius.circular(radius),
+          bottomRight: const Radius.circular(0),
+        );
       default:
         return BorderRadius.circular(radius);
     }

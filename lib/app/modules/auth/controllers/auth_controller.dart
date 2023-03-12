@@ -14,11 +14,13 @@ class AuthController extends GetxController {
   RxString password = ''.obs;
   RxString passwordConfirm = ''.obs;
   RxString name = ''.obs;
+  late FirebaseAuth auth;
   final formKey = GlobalKey<FormState>();
 
   @override
   void onInit() {
     super.onInit();
+    auth = FirebaseAuth.instance;
   }
 
   @override
@@ -29,7 +31,6 @@ class AuthController extends GetxController {
   @override
   void onClose() {}
   Future<void> registerWithPhone() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
     auth.verifyPhoneNumber(
       phoneNumber: phone.value,
       verificationCompleted: (phoneAuthCredential) {
@@ -46,7 +47,6 @@ class AuthController extends GetxController {
   void loginWithEmailAndPassword() async {
     try {
       isLoading.value = true;
-      FirebaseAuth auth = FirebaseAuth.instance;
       await auth
           .signInWithEmailAndPassword(
             email: email.value,
@@ -54,6 +54,7 @@ class AuthController extends GetxController {
           )
           .then(
             (res) => {
+              print("res: ${res.user!.emailVerified}"),
               if (res.user != null)
                 {
                   // set local storage
@@ -78,7 +79,6 @@ class AuthController extends GetxController {
   void registerWithEmailPassword() async {
     try {
       isLoading.value = true;
-      FirebaseAuth auth = FirebaseAuth.instance;
       await auth
           .createUserWithEmailAndPassword(
             email: email.value,
@@ -109,5 +109,19 @@ class AuthController extends GetxController {
 
   void loginWithGoogle() async {
     // await Get.find<>
+  }
+  void signOut() async {
+    await auth.signOut();
+    // navigate to login page
+    // listen to auth state
+    auth.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        Get.offAllNamed(Routes.ONBOARDING);
+      } else {
+        print('User is signed in!');
+      }
+    });
+    // SystemNavigator.pop();
   }
 }

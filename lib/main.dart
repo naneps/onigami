@@ -11,7 +11,6 @@ import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -19,10 +18,6 @@ void main() async {
   await Get.putAsync(
     () => SpUtil.getInstance(),
   );
-
-// make function for check user is login or not
-// if user is login then go to home page
-// if user is not login then go to login page
 
   runApp(
     GetMaterialApp(
@@ -36,12 +31,12 @@ void main() async {
           } else {
             print('User is signed in!');
             Get.offAllNamed(Routes.CORE);
+            print(user);
           } // else
         });
       },
       initialRoute: Routes.ONBOARDING,
       getPages: AppPages.routes,
-      home: Container(),
       theme: ThemeApp.defaultTheme,
     ),
   );

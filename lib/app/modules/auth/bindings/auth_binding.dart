@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:onigami/app/providers/auht_provider.dart';
+import 'package:onigami/app/providers/auth_provider.dart';
 
 import '../controllers/auth_controller.dart';
 

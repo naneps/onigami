@@ -9,6 +9,7 @@ class XIconButton extends StatelessWidget {
   String? tooltip;
   EdgeInsets? margin;
   EdgeInsets? padding;
+  bool? hasShadow;
   IconData icon;
   double? size;
   Color? backgroundColor;
@@ -24,6 +25,7 @@ class XIconButton extends StatelessWidget {
     this.size,
     this.margin,
     this.tooltip,
+    this.hasShadow = false,
     this.padding,
     required this.icon,
     Key? key,
@@ -56,14 +58,16 @@ class XIconButton extends StatelessWidget {
               color: supportColor!.withOpacity(0.5),
             ),
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: shadowColor!.withOpacity(0.2),
-                spreadRadius: 0,
-                blurRadius: 48,
-                offset: const Offset(0, 28), // changes position of shadow
-              ),
-            ],
+            boxShadow: hasShadow!
+                ? [
+                    BoxShadow(
+                      color: shadowColor!.withOpacity(0.2),
+                      spreadRadius: 0,
+                      blurRadius: 48,
+                      offset: const Offset(0, 28), // changes position of shadow
+                    ),
+                  ]
+                : null,
           ),
           child: Icon(
             icon,
