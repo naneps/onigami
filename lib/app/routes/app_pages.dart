@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:onigami/app/modules/product/views/product_view.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
@@ -13,6 +14,8 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/product/bindings/product_binding.dart';
+import '../modules/product/views/products_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/setting/bindings/setting_binding.dart';
@@ -70,6 +73,16 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCTS,
+      page: () => const ProductsView(),
+      binding: ProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT,
+      page: () => ProductView(),
+      binding: ProductBinding(),
     ),
   ];
 }

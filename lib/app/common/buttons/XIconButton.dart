@@ -55,7 +55,7 @@ class XIconButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: backgroundColor ?? Colors.white,
             border: Border.all(
-              color: supportColor!.withOpacity(0.5),
+              color: supportColor!,
             ),
             borderRadius: BorderRadius.circular(10),
             boxShadow: hasShadow!

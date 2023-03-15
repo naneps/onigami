@@ -7,12 +7,16 @@ import 'package:onigami/app/common/utils.dart';
 class XPicture extends StatelessWidget {
   String? imageUrl;
   double? size;
+  double? sizeWidth;
+  double? sizeHeight;
   String? assetImage;
   RadiusType? radiusType;
   XPicture(
       {Key? key,
       required this.imageUrl,
       this.size = 100,
+      this.sizeWidth,
+      this.sizeHeight,
       this.radiusType = RadiusType.rounded,
       this.assetImage = "assets/images/placeholder.jpg"})
       : super(key: key);
@@ -27,10 +31,11 @@ class XPicture extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imageUrl!,
         imageBuilder: (context, imageProvider) => Container(
-          width: size,
-          height: size,
+          width: sizeWidth ?? size,
+          height: sizeHeight ?? size,
           decoration: BoxDecoration(
-            borderRadius: Utils.handleRequestRadius(radiusType: radiusType!),
+            borderRadius:
+                Utils.handleRequestRadius(radius: 10, radiusType: radiusType!),
             image: DecorationImage(
               image: imageProvider,
               fit: BoxFit.cover,
@@ -38,8 +43,8 @@ class XPicture extends StatelessWidget {
           ),
         ),
         placeholder: (context, url) => Container(
-          width: size,
-          height: size,
+          width: sizeWidth ?? size,
+          height: sizeHeight ?? size,
           decoration: BoxDecoration(
             borderRadius: Utils.handleRequestRadius(radiusType: radiusType!),
             color: Colors.grey[300],
@@ -50,8 +55,8 @@ class XPicture extends StatelessWidget {
           ),
         ),
         errorWidget: (context, url, error) => Container(
-          width: size,
-          height: size,
+          width: sizeWidth ?? size,
+          height: sizeHeight ?? size,
           decoration: BoxDecoration(
             borderRadius: Utils.handleRequestRadius(radiusType: radiusType!),
             color: Colors.grey[300],

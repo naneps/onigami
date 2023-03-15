@@ -31,7 +31,6 @@ void main() async {
           } else {
             print('User is signed in!');
             Get.offAllNamed(Routes.CORE);
-            print(user);
           } // else
         });
       },

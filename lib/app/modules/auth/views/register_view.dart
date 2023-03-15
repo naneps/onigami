@@ -104,6 +104,7 @@ class RegisterView extends GetView<AuthController> {
                     labelText: "Password",
                     prefixIcon: MdiIcons.lockOutline,
                     keyboardType: TextInputType.visiblePassword,
+                    obscureText: !controller.isShowPass.value,
                     onSave: (val) {
                       controller.password.value = val!;
                     },
@@ -120,10 +121,15 @@ class RegisterView extends GetView<AuthController> {
                   XTextField(
                     labelText: "Confirm Password",
                     prefixIcon: MdiIcons.lockOutline,
+                    obscureText: controller.isShowPassConfirm.value,
                     keyboardType: TextInputType.visiblePassword,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Confirm Password is required";
+                      }
+                      //handle minimum
+                      if (value.length < 8) {
+                        return "Password minimum 8 character";
                       }
                       return null;
                     },

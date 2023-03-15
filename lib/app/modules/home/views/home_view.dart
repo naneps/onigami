@@ -1,12 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:onigami/app/common/buttons/XButton.dart';
 import 'package:onigami/app/common/buttons/XIconButton.dart';
+import 'package:onigami/app/common/shape/rounded_container.dart';
+import 'package:onigami/app/common/ui/heading_text.dart';
+import 'package:onigami/app/common/ui/xappbar.dart';
 import 'package:onigami/app/common/ui/xpicture.dart';
 import 'package:onigami/app/common/utils.dart';
+import 'package:onigami/app/modules/home/views/best_seller_product_view.dart';
+import 'package:onigami/app/themes/theme.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -18,59 +24,31 @@ class HomeView extends GetView<HomeController> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 20,
-              ),
-              width: Get.width,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 10,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border:
-                    Border.all(color: Colors.grey.withOpacity(0.5), width: 1),
-                borderRadius: Utils.handleRequestRadius(
-                    radius: 20, radiusType: RadiusType.diagonal1),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            const XProfileBar(),
+            Expanded(
+              child: ListView(
                 children: [
-                  XPicture(
-                    imageUrl: "",
-                    size: 50,
-                    radiusType: RadiusType.circle,
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Selamat Pagi..',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
+                  Container(
+                    width: Get.width,
+                    height: 150,
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ),
+                    decoration: BoxDecoration(
+                      color: ThemeApp.backgroundColor,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: ThemeApp.darkColor.withOpacity(0.5),
                       ),
-                      SizedBox(height: 5),
-                      Text(
-                        'Ahmad',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+                    ),
+                    child: Column(
+                      children: [],
+                    ),
                   ),
-                  Spacer(),
-                  XIconButton(
-                    icon: MdiIcons.bellOutline,
-                    tooltip: 'Notifikasi',
-                  )
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  BestSellerProductView(),
                 ],
               ),
             ),

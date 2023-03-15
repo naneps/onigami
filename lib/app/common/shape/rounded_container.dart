@@ -27,11 +27,12 @@ class RoundedContainer extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
       padding: padding ?? const EdgeInsets.all(0),
       margin: margin ?? const EdgeInsets.all(0),
       width: width,
       height: height,
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: color ?? Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(radius!.toDouble())),
@@ -51,6 +52,7 @@ class RoundedContainer extends StatelessWidget {
               ]
             : null,
       ),
+      duration: Duration(milliseconds: 300),
       child: child ?? const SizedBox(),
     );
   }

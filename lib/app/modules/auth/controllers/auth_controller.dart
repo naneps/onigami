@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,12 +16,14 @@ class AuthController extends GetxController {
   RxString passwordConfirm = ''.obs;
   RxString name = ''.obs;
   late FirebaseAuth auth;
+  late FirebaseFirestore fireStore;
   final formKey = GlobalKey<FormState>();
 
   @override
   void onInit() {
     super.onInit();
     auth = FirebaseAuth.instance;
+    fireStore = FirebaseFirestore.instance;
   }
 
   @override
@@ -123,5 +126,18 @@ class AuthController extends GetxController {
       }
     });
     // SystemNavigator.pop();
+  }
+
+  void createUser() async {
+    final user = auth.currentUser;
+    await fireStore.collection('users').doc(user!.uid).set(
+      {
+        'name': name.value,
+        'email': email.value,
+        'phone': phone.value,
+        'createdAt': user.metadata.creationTime,
+        'lastSignIn': user.metadata.lastSignInTime,
+      },
+    );
   }
 }

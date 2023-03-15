@@ -128,6 +128,9 @@ class Utils {
           bottomLeft: Radius.circular(radius),
           bottomRight: const Radius.circular(0),
         );
+      case RadiusType.none:
+        return BorderRadius.zero;
+
       default:
         return BorderRadius.circular(radius);
     }
